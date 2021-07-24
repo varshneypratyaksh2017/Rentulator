@@ -1,0 +1,167 @@
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <title>Rent Calculator</title>
+</head>
+<style>
+ * {
+ margin: 0;
+ font-family: Arial, Helvetica, sans-serif;
+ }
+ body {
+ height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background-color: #F0F2F5;
+ }
+ .wrapper {
+ display: flex;
+ padding: 30px;
+ border-radius: 30px;
+ align-items: center;
+ flex-direction: column;
+ justify-content: center;
+ background-color: white;
+ box-shadow: 0 0 10px 6px #E5E6E9;
+ }
+ h1 {
+ font-size: 23px;
+ font-weight: 600;
+ color: red;
+ margin-bottom: 15px;
+ }
+
+h3{
+font-size: 13px;
+ font-weight: 600;
+ color: #4faa50;
+ margin-bottom: 15px;	
+}
+
+ input {
+ width: 400px;
+ border: none;
+ padding: 10px;
+ font-size: 15px;
+ margin-bottom: 10px;
+ background-color: #f5f5f5;
+ }
+ .buttons {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ }
+ button {
+ width: 100px;
+ height: 40px;
+ border: none;
+ color: white;
+ font-size: 15px;
+ font-weight: 500;
+ margin: 10px 20px;
+ border-radius: 10px;
+ background-color: #1877F2;
+ }
+ button:hover {
+ cursor: pointer;
+ background-color: #1877F2;
+ }
+ .result {
+ display: none;
+ padding: 10px;
+ font-size: 15px;
+ margin-top: 10px;
+ font-weight: 400px;
+ border-radius: 10px;
+ }
+ .result-green {
+ display: flex;
+ color: white;
+ border-color: green;
+ background-color: green;
+ }
+ .result-green p {
+ margin-left: 10px;
+ }
+ .result-red {
+ display: flex;
+ color: white;
+ border-color: red;
+ background-color: red;
+ }
+</style>
+<body>
+ <div class="wrapper">
+ <h1 >Godown Rent Calculator </h1>
+ <h3 >Built for Madhur Godowns</h3>
+ <h3 ></h3>
+ <input id="quantity" type="text" placeholder="Enter the quantity" />
+ <input id="rate" type="text" placeholder="Enter the Rate" />
+ <input id="sdate" type="date" placeholder="Enter the Starting Date" />
+ <input id="edate" type="date" placeholder="Enter the Ending Date" />
+ <div>
+ <button id="go"> Go </button>
+ </div>
+ <div class="result">
+ <strong></strong>
+ <p></p>
+ </div>
+ </div>
+</body>
+
+<script type = "text/javascript" > 
+    // JavaScript program to illustrate  
+    // calculation of no. of days between two date  
+  
+    // To set two dates to two variables 
+
+  
+
+  
+</script> 
+
+<script>
+ const output = document.getElementsByClassName('result')[0];
+
+ function print_result(heading, text) {
+ if (text) {
+ output.classList.remove('result-red');
+ output.classList.add('result-green');
+ output.getElementsByTagName('strong')[0].innerHTML = heading;
+ output.getElementsByTagName('p')[0].innerHTML = text;
+ } else {
+ output.classList.remove('result-green');
+ output.classList.add('result-red');
+ output.getElementsByTagName('strong')[0].innerHTML = heading;
+ output.getElementsByTagName('p')[0].innerHTML = '';
+ }
+ }
+
+ function daysDifference() {  
+ //define two variables and fetch the input from HTML form  
+ var quantity= document.getElementById('quantity').value;
+ var rate= document.getElementById('rate').value;
+ var dateI1 = document.getElementById("sdate").value;  
+ var dateI2 = document.getElementById("edate").value;  
+
+//define two date object variables to store the date values  
+ var date1 = new Date(dateI1);  
+ var date2 = new Date(dateI2);  
+
+//calculate time difference  
+ var time_difference = date2.getTime() - date1.getTime();  
+
+ //calculate days difference by dividing total milliseconds in a day  
+ var result = time_difference / (1000 * 60 * 60 * 24);  
+
+ result=result*rate*quantity/30;
+
+print_result('Total Rent is',Math.round(result));
+}
+ 
+ document.getElementById('go').addEventListener('click',daysDifference );
+</script>
+
+
+
